@@ -11,6 +11,7 @@ import { createContext, useState } from 'react';
 import Home from './components/Home/Home';
 import Book from './components/Book/Book';
 import Room from './components/Room/Room';
+import PrivateRoute from './components/PrivateRiute/PrivateRoute';
 
 export const UserContext = createContext();
 
@@ -38,9 +39,9 @@ function App() {
             <Home />
           </Route>
 
-          <Route path="/book/:bedType">
+          <PrivateRoute path="/book/:bedType">
             <Book />
-          </Route>
+          </PrivateRoute>
 
           <Route path="/room">
             <Room />

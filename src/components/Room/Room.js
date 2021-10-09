@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './Room.css';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -23,11 +24,11 @@ const Room = ({ room }) => {
     }
 
     return (
-        <Card sx={{ maxWidth: 345 }} className={{ backgroundColor: red[500] }}>
+        <Card sx={{ maxWidth: 345 }} >
 
             <CardHeader
                 avatar={
-                    <Avatar className="background-color: red">
+                    <Avatar className={{ backgroundColor: red[500] }}>
                         {room.avatar}
                     </Avatar>
                 }
@@ -43,8 +44,7 @@ const Room = ({ room }) => {
             />
             <CardContent>
                 <Typography variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
+                    {room.description}
                 </Typography>
             </CardContent>
             <CardActions disableSpacing>
@@ -57,7 +57,12 @@ const Room = ({ room }) => {
                 <IconButton aria-label="price">
                     <AttachMoneyIcon />: {room.price}
                 </IconButton>
-                <Button onClick={() => handleBook(room.bedType)} variant="contained" color="primary">
+                <Button
+                    onClick={() => handleBook(room.bedType)}
+                    variant="contained"
+                    className="bookButton"
+                    color="success"
+                >
                     Book
                 </Button>
             </CardActions>

@@ -13,7 +13,7 @@ const Header = () => {
             <div className="d-flex justify-content-center">
                 <Link className="m-3 link" to="/home">Home</Link>
                 <Link className="m-3 link" to="/login">Login</Link>
-                <Link className="m-3 link" to="/book">Book</Link>
+                <Link className="m-3 link" to="/book/bedType">Book</Link>
             </div>
 
             <div className="text-center mt-3 ">
