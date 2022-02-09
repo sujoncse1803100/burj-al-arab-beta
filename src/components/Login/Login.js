@@ -11,12 +11,11 @@ const Login = () => {
   let history = useHistory();
   let location = useLocation();
   let { from } = location.state || { from: { pathname: "/" } };
+  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }
-
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
 
   const hndleGoogleSignin = () => {
     const provider = new GoogleAuthProvider();
@@ -45,9 +44,21 @@ const Login = () => {
 
   return (
     <div className="text-center pt-5">
-      <button className="btn btn-secondary " onClick={hndleGoogleSignin}>
-        google signin
-      </button>
+      {!loggedInUser.email ? (
+        <button className="btn btn-secondary " onClick={hndleGoogleSignin}>
+          Google Sign In
+        </button>
+      ) : (
+        <div className="text-center">
+          <h1>You have already logged in</h1>
+          <button
+            onClick={() => setLoggedInUser({})}
+            className="btn btn-danger mb-5 mt-5"
+          >
+            Logout
+          </button>
+        </div>
+      )}
     </div>
   );
 };

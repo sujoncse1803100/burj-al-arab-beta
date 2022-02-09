@@ -7,14 +7,12 @@ import {
   MuiPickersUtilsProvider,
   KeyboardDatePicker,
 } from "@material-ui/pickers";
-// import Button from '@material-ui/core/Button'
 import { useState } from "react";
 import { UserContext } from "../../App";
-import Bookings from "../Bookings/Bookings";
 import { useHistory } from "react-router-dom";
 
 const Book = () => {
-  const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+  const [loggedInUser] = useContext(UserContext);
   const { bedType } = useParams();
   const history = useHistory();
 
@@ -60,8 +58,7 @@ const Book = () => {
         Let's book a <b style={{ color: "red" }}>{bedType}</b> room
       </h3>
       <p>
-        {" "}
-        Want a different room ? <Link to="/home">Yes</Link>{" "}
+        Want a different room ? <Link to="/">Yes</Link>
       </p>
 
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -99,7 +96,6 @@ const Book = () => {
       >
         BOOK NOW
       </button>
-      {/* <Bookings key={1} /> */}
     </div>
   );
 };

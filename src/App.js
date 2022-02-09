@@ -9,6 +9,7 @@ import Book from "./components/Book/Book";
 import Room from "./components/Room/Room";
 import PrivateRoute from "./components/PrivateRiute/PrivateRoute";
 import BookingSuccess from "./components/BookingSuccess/BookingSuccess";
+import Profile from "./components/Profile/Profile";
 
 export const UserContext = createContext();
 
@@ -21,10 +22,6 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/home">
-            <Home />
-          </Route>
-
           <Route path="/login">
             <Login />
           </Route>
@@ -33,9 +30,13 @@ function App() {
             <Home />
           </Route>
 
-          <Route exact path="/success">
+          <PrivateRoute exact path="/success">
             <BookingSuccess />
-          </Route>
+          </PrivateRoute>
+
+          <PrivateRoute exact path="/profile">
+            <Profile />
+          </PrivateRoute>
 
           <PrivateRoute path="/book/:bedType">
             <Book />
