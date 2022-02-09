@@ -1,17 +1,14 @@
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import Login from './components/Login/Login';
-import Header from './components/Header/Header';
-import { createContext, useState } from 'react';
-import Home from './components/Home/Home';
-import Book from './components/Book/Book';
-import Room from './components/Room/Room';
-import PrivateRoute from './components/PrivateRiute/PrivateRoute';
+import Login from "./components/Login/Login";
+import Header from "./components/Header/Header";
+import { createContext, useState } from "react";
+import Home from "./components/Home/Home";
+import Book from "./components/Book/Book";
+import Room from "./components/Room/Room";
+import PrivateRoute from "./components/PrivateRiute/PrivateRoute";
+import BookingSuccess from "./components/BookingSuccess/BookingSuccess";
 
 export const UserContext = createContext();
 
@@ -20,11 +17,8 @@ function App() {
 
   return (
     <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      {
-        loggedInUser.email &&
-        <p>Email : {loggedInUser.email}</p>
-      }
-      <Router >
+      {/* {loggedInUser.email && <p>Email : {loggedInUser.email}</p>} */}
+      <Router>
         <Header />
         <Switch>
           <Route path="/home">
@@ -39,6 +33,10 @@ function App() {
             <Home />
           </Route>
 
+          <Route exact path="/success">
+            <BookingSuccess />
+          </Route>
+
           <PrivateRoute path="/book/:bedType">
             <Book />
           </PrivateRoute>
@@ -46,7 +44,6 @@ function App() {
           <Route path="/room">
             <Room />
           </Route>
-
         </Switch>
       </Router>
     </UserContext.Provider>
